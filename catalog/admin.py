@@ -47,8 +47,8 @@ class BookInstanceAdmin(admin.ModelAdmin):
             'fields': ('book', 'imprint', 'id')
         }),
         ('Availability', {
-            'fields': ('status', 'due_back')
+            'fields': ('status', 'due_back', 'borrower')
         }),
     )
 
-    list_display = ('id', 'book', 'imprint', 'due_back', 'status')
+    list_display = ('id', 'book', 'imprint', 'due_back', 'status', 'borrower')
