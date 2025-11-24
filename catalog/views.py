@@ -41,7 +41,7 @@ from django.views import generic
 
 class BookListView(generic.ListView):
     model = Book
-    paginate_by = 1
+    paginate_by = 10
 
 class BookDetailView(generic.DetailView):
     model = Book
@@ -49,7 +49,7 @@ class BookDetailView(generic.DetailView):
 ###
 class AuthorListView(generic.ListView):
     model = Author
-    paginate_by = 1
+    paginate_by = 10
 
 class AuthorDetailView(generic.DetailView):
     model = Author
@@ -135,7 +135,7 @@ from .models import Author
 class AuthorCreate(PermissionRequiredMixin, CreateView):
     model = Author
     fields = ['first_name', 'last_name', 'date_of_birth', 'date_of_death']
-    initial = {'date_of_death': '11/11/2023'}
+    initial = {'date_of_death': datetime.date(2023, 11, 11)}
     permission_required = 'catalog.add_author'
 
 class AuthorUpdate(PermissionRequiredMixin, UpdateView):
@@ -183,3 +183,4 @@ class BookDelete(PermissionRequiredMixin, DeleteView):
             return HttpResponseRedirect(
                 reverse("book-delete", kwargs={"pk": self.object.pk})
             )
+            
